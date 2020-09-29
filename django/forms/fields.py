@@ -56,7 +56,6 @@ class Field:
     empty_values = list(validators.EMPTY_VALUES)
 
     def __init__(self, *, required=True, widget=None, label=None, initial=None,
-                 help_text='', error_messages=None, show_hidden_initial=False,
                  validators=(), localize=False, disabled=False, label_suffix=None):
         # required -- Boolean that specifies whether the field is required.
         #             True by default.
@@ -1266,6 +1265,4 @@ class JSONField(CharField):
         # For purposes of seeing whether something has changed, True isn't the
         # same as 1 and the order of keys doesn't matter.
         return (
-            json.dumps(initial, sort_keys=True, cls=self.encoder) !=
-            json.dumps(self.to_python(data), sort_keys=True, cls=self.encoder)
         )
